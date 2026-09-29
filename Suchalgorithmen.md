@@ -75,6 +75,7 @@ Da die Daten jedoch **sortiert** sind, kann die Suche früher abgebrochen werden
 - oder wenn der aktuelle Wert bereits **größer als der gesuchte Wert** ist
 
 Dann kann der gesuchte Wert später nicht mehr vorkommen.
+
 ![alt text](image-1.png)
 
 Code Beispiel:
@@ -297,8 +298,53 @@ public class IndexSearchExample {
     }
 }
 ```
+# Selbstanordnende Liste
 
+Bei einer linearen Suche werden Elemente von vorne nach hinten durchsucht. <br>
+Wenn bestimmte Elemente **häufiger gesucht werden als andere**, kann es sinnvoll sein,
+diese weiter vorne in der Liste zu platzieren. <br>
+Dadurch werden häufig gesuchte Elemente schneller gefunden. <br>
+Da man die Zugriffshäufigkeit meistens nicht im Voraus kennt,
+wird die Liste nach erfolgreichen Suchvorgängen **dynamisch umgeordnet**.
 
+Ziel:
+Häufig gesuchte Elemente sollen möglichst weit vorne stehen,
+damit weniger Vergleiche notwendig sind.
 
+Dafür gibt es verschiedene Strategien:
+- MF-Regel (Move-to-Front): gefundenes Element ganz nach vorne
+- T-Regel (Transpose): gefundenes Element einen Platz nach vorne
+- FC-Regel (Frequency Count): nach Zugriffshäufigkeit sortieren
 
+# Vom Problem zur Lösung
+```mermaid
+flowchart LR
+A(Unmöglich)
+B(Problemstellung)
+C(Lösbar)
+D("leicht" oder einfach oder billig)
+E("schwierig" oder aufwendig oder teuer)
+F(Lösung oder Algorithmus)
+G(Optimieren)
+H([Beweis])
 
+B --> A
+B --> C
+C --> D
+C --> E
+D --> F
+E --> F
+F --> G
+A --> H
+```
+### folgendes Problem:
+
+Daten: `7, 9, 3, 5, 1, 5, 2`
+
+Die binäre Suche soll angewendet werden. Das ist jedoch nicht möglich, da die Daten dafür sortiert sein müssen.
+
+Daher muss zuerst ein [Sortieralgorithmus](Sortieralgorithmen.md) angewendet werden.
+
+**Die binäre Suche benötigt sortierte Daten.**
+
+→ Danach kann die binäre Suche angewendet werden.
