@@ -183,14 +183,12 @@ public static int exponentialSearch(int[] numbers, int target) {
 }
 ```
 # Interpolationssuche
-Variation der binären Suche.
-
+Variation der binären Suche.<br>
 Voraussetzung:
 Die Daten müssen sortiert sein.
 
 Bei der binären Suche wird immer das mittlere Element des
-Suchbereichs betrachtet.
-
+Suchbereichs betrachtet.<br>
 Bei der Interpolationssuche wird stattdessen geschätzt,
 an welcher Position der gesuchte Wert ungefähr liegen müsste.
 
@@ -241,6 +239,64 @@ public static int interpolationSearch(int[] numbers, int target) {
 }
 ```
 # Indexsuche
+Bei der Indexsuche wird nicht der gesamte Datenbestand durchsucht. <br>
+Stattdessen gibt es einen **Index**, in dem gespeichert ist, wo bestimmte Daten zu finden sind. <br>
+Man kann sich das ähnlich wie das Inhaltsverzeichnis oder Register in einem Buch vorstellen.
+### Prinzip:
+
+Zuerst wird ein Index aufgebaut: <br>
+Schlüssel → Speicherort
+
+Beispiel:
+
+Müller → Position 120 <br>
+Schmidt → Position 450 <br>
+Zimmermann → Position 980 <br>
+
+Wenn nach Schmidt gesucht wird, muss nicht die komplette Datenmenge durchsucht werden.
+Stattdessen wird zuerst im Index nachgesehen:
+Schmidt → Position 450
+
+Danach kann direkt auf die entsprechende Stelle zugegriffen werden.
+### Ablauf
+1. Index erstellen
+2. Suchbegriff im Index suchen
+3. Speicherort bestimmen
+4. Daten an dieser Stelle ausgeben
+
+### Vorteil
+Die Suche ist besonders bei großen Datenmengen deutlich schneller.
+### Nachteil
+Der Index benötigt zusätzlichen Speicher und muss aktualisiert werden,
+wenn Daten hinzugefügt, geändert oder gelöscht werden.
+
+Code Beispiel: 
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class IndexSearchExample {
+
+    public static void main(String[] args) {
+
+        Map<String, Integer> index = new HashMap<>();
+
+        index.put("Müller", 120);
+        index.put("Schmidt", 450);
+        index.put("Zimmermann", 980);
+
+        String target = "Schmidt";
+
+        if (index.containsKey(target)) {
+            int position = index.get(target);
+
+            System.out.println("Gefunden an Position: " + position);
+        } else {
+            System.out.println("Nicht gefunden");
+        }
+    }
+}
+```
 
 
 
